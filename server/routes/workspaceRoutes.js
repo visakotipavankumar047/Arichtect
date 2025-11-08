@@ -23,9 +23,8 @@ const asObjectId = (value) => {
 };
 
 export const applyWorkspaceRoutes = (app) => {
-  app.get(
-    "/api/workspace",
-    asyncHandler(async (_req, res) => {
+  console.log("Registering /api/workspace route...");
+  app.get("/api/workspace", async (_req, res) => {
       const [projects, tasks, teamMembers] = await Promise.all([
         Project.find().sort({ createdAt: -1 }),
         Task.find().sort({ createdAt: -1 }),
@@ -37,8 +36,7 @@ export const applyWorkspaceRoutes = (app) => {
         tasks,
         teamMembers,
       });
-    }),
-  );
+    });
 
   app.post(
     "/api/projects",

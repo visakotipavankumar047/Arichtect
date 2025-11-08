@@ -20,7 +20,9 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
+console.log("Applying workspace routes...");
 applyWorkspaceRoutes(app);
+console.log("Workspace routes applied.");
 
 // eslint-disable-next-line no-unused-vars
 app.use((err, _req, res, _next) => {
